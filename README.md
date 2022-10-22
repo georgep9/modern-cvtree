@@ -18,3 +18,5 @@ Parallelized
 g++ -g parallel.cpp -o parallel -fopenmp
 ./parallel
 ```
+
+links to https://github.com/georgep9/parallel-cvtree
