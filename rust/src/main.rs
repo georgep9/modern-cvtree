@@ -1,10 +1,8 @@
-
-const CODE: [i32; 26] = [0, 2, 1, 2, 3, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, 16, 1, 17, 18, 5, 19, 3];
-fn encode(ch: char) -> i32 { CODE[(ch as u32 - 'A' as u32) as usize] }
+// const CODE: [i32; 26] = [0, 2, 1, 2, 3, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, 16, 1, 17, 18, 5, 19, 3];
+// fn encode(ch: char) -> i32 { CODE[(ch as u32 - 'A' as u32) as usize] }
 const LEN: u32 = 6;
 const AA_NUMBER: u32 = 20;
-const EPSILON: f32 = 1e-010;
-
+// const EPSILON: f32 = 1e-010;
 
 fn init(m: &mut u32, m1: &mut u32, m2: &mut u32){
     *m2 = 1;
@@ -15,8 +13,9 @@ fn init(m: &mut u32, m1: &mut u32, m2: &mut u32){
     *m = *m1 * AA_NUMBER; // M  = AA_NUMBER ^ (LEN);
 }
         
-fn read_input_file() {
-    println!("read_input_file");
+fn read_input_file() -> &'static str {
+    let input_file_contents = include_str!("list.txt");
+    return input_file_contents;
 }
 
 fn load_all_bacteria_parallel() {
@@ -35,10 +34,11 @@ fn main() {
     let mut _m2: u32 = 0;
 
     init(&mut _m, &mut _m1, &mut _m2);
-    
-    println!("{} {} {}", &mut _m, &mut _m1, &mut _m2);
+    println!("init output: {} {} {}", &mut _m, &mut _m1, &mut _m2);
 
-    read_input_file();
+    let input_file_list = read_input_file();
+    println!("input file list data: {input_file_list}");
+
     load_all_bacteria_parallel();
     compare_all_bacteria_parallel();
 }
